@@ -2260,7 +2260,7 @@ function decodeEmail(encoded) {
     return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c.charCodeAt(0) + 13) ? c.charCodeAt(0) + 13 : c.charCodeAt(0) - 13);
   });
 }
-const primaryEmail = decodeEmail('nyy@erxfpbg.pbz');
+const primaryEmail = decodeEmail('nyy@erkfpbg.pbz');
 const businessEmail = decodeEmail('qnzbafnyinber884010@tznvy.pbz');
 document.getElementById('email-primary').innerHTML = '<a href="mailto:' + primaryEmail + '">' + primaryEmail + '</a>';
 document.getElementById('email-business').innerHTML = '<a href="mailto:' + businessEmail + '">' + businessEmail + '</a>';
