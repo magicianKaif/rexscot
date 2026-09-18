@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rexscot — Enterprise Penetration Testing & Security Consulting</title>
-<meta name="description" content="Rexscot delivers enterprise-grade penetration testing, VAPT assessments, and application security consulting for organisations that cannot afford to be breached.">
+<title>Rexscot — Penetration Testing & Security Consulting</title>
+<meta name="description" content="Rexscot delivers enterprise-grade penetration testing, VAPT, API security, and mobile security consulting. Human-led assessments with verified remediation.">
+<meta name="keywords" content="penetration testing, VAPT, web application security, API security testing, mobile security, cybersecurity consulting, ethical hacking, vulnerability assessment, India">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Rexscot">
+<link rel="canonical" href="https://rexscot.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rexscot.com/">
+<meta property="og:title" content="Rexscot — Penetration Testing & Security Consulting">
+<meta property="og:description" content="Enterprise-grade penetration testing, VAPT, and application security consulting. Human-led assessments with verified remediation for organisations that cannot afford to be breached.">
+<meta property="og:image" content="https://rexscot.com/logo.png">
+<meta property="og:site_name" content="Rexscot">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://rexscot.com/">
+<meta name="twitter:title" content="Rexscot — Penetration Testing & Security Consulting">
+<meta name="twitter:description" content="Enterprise-grade penetration testing, VAPT, and application security consulting. Human-led. Verified remediation.">
+<meta name="twitter:image" content="https://rexscot.com/logo.png">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Rexscot",
+  "url": "https://rexscot.com",
+  "logo": "https://rexscot.com/logo.png",
+  "email": "all@rexscot.com",
+  "description": "Enterprise-grade penetration testing, VAPT, and application security consulting.",
+  "founder": { "@type": "Person", "name": "Kaif Shaikh" },
+  "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+  "serviceType": ["Penetration Testing", "VAPT", "API Security", "Mobile Security", "Security Consulting"],
+  "areaServed": "Worldwide"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1255,6 +1291,16 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ── LOGO IMAGE ── */
+.nav-logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover .nav-logo-img { opacity: 0.8; }
+
 </style>
 </head>
 <body>
@@ -1265,7 +1311,6 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
   <a href="#" onclick="nav('home')">Home</a>
   <a href="#" onclick="nav('services')">Services</a>
   <a href="#" onclick="nav('about')">About</a>
-  <a href="#" onclick="nav('blog')">Insights</a>
   <a href="#" onclick="nav('reviews')">Clients</a>
   <a href="#" onclick="nav('collaborate')">Collaborate</a>
   <a href="#" onclick="nav('contact')">Contact</a>
@@ -1274,14 +1319,12 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
 <!-- NAV -->
 <header class="nav" id="mainNav">
   <div class="nav-logo" onclick="nav('home')">
-    <div class="nav-logo-mark"><div class="nav-logo-inner"></div></div>
-    <span class="nav-wordmark">Rexscot</span>
+    <img src="logo.png" alt="Rexscot" class="nav-logo-img">
   </div>
   <nav class="nav-links">
     <a href="#" id="nl-home" class="active" onclick="nav('home')">Home</a>
     <a href="#" id="nl-services" onclick="nav('services')">Services</a>
     <a href="#" id="nl-about" onclick="nav('about')">About</a>
-    <a href="#" id="nl-blog" onclick="nav('blog')">Insights</a>
     <a href="#" id="nl-reviews" onclick="nav('reviews')">Clients</a>
     <a href="#" id="nl-collaborate" onclick="nav('collaborate')">Collaborate</a>
     <a href="#" id="nl-contact" onclick="nav('contact')">Contact</a>
@@ -1356,11 +1399,11 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
           </p>
           <div class="intro-stat-row reveal reveal-d3">
             <div>
-              <div class="stat-num">40+</div>
+              <div class="stat-num">5+</div>
               <div class="stat-label">Applications Tested</div>
             </div>
             <div>
-              <div class="stat-num">200+</div>
+              <div class="stat-num">16+</div>
               <div class="stat-label">Vulnerabilities Found</div>
             </div>
             <div>
@@ -1723,7 +1766,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="nav-logo"><div class="nav-logo-mark"><div class="nav-logo-inner"></div></div><span class="nav-wordmark">Rexscot</span></div>
+          <div class="nav-logo"><img src="logo.png" alt="Rexscot" class="nav-logo-img"></div>
           <p class="footer-brand-desc">Enterprise-grade penetration testing and security consulting for organisations that cannot afford to be breached. Private Limited — India.</p>
         </div>
         <div class="footer-col">
@@ -1738,20 +1781,19 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
         <div class="footer-col">
           <h4>Company</h4>
           <a href="#" onclick="nav('about')">About Us</a>
-          <a href="#" onclick="nav('blog')">Insights</a>
-          <a href="#" onclick="nav('reviews')">Client Reviews</a>
+                  <a href="#" onclick="nav('reviews')">Client Reviews</a>
           <a href="#" onclick="nav('collaborate')">Collaborate</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
-          <a href="mailto:kaifshaikh5006@gmail.com">kaifshaikh5006@gmail.com</a>
+          <a href="mailto:all@rexscot.com">all@rexscot.com</a>
           <a href="#" onclick="nav('contact')">Request Assessment</a>
           <a href="#" onclick="nav('contact')">Book Consultation</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>Rexscot Private Limited — Security Consulting</span>
-        <span>Kaif Shaikh &amp; Musaddik Khan, Co-Founders</span>
+        <span>Kaif Shaikh, Founder — Musaddik Khan, Co-Founder</span>
       </div>
     </div>
   </footer>
@@ -1902,7 +1944,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
       <div class="team-card">
         <div class="team-avatar"><div class="avatar-init">KS</div></div>
         <div class="team-name">Kaif Shaikh</div>
-        <div class="team-role">Co-Founder and Principal Security Consultant</div>
+        <div class="team-role">Founder &amp; Principal Security Consultant</div>
         <div class="team-handle">// Magician Slime</div>
         <div class="team-bio">Application security specialist and offensive security researcher. Leads web application assessments, API security engagements, and the development of AI-assisted security workflows used in Rexscot's reconnaissance process.</div>
         <div class="team-skills">
@@ -1953,28 +1995,6 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
   <section class="cta-section"><div class="container"><h2 class="t-h2 reveal reveal-d1">Ready to begin?</h2><p class="t-body reveal reveal-d2" style="margin-top:1.25rem">Contact us to discuss your requirements. No commitment for the initial consultation.</p><div class="cta-actions reveal reveal-d3" style="margin-top:3rem"><a class="btn-primary" href="#" onclick="nav('contact')">Get in Touch</a></div></div></section>
 </div>
 
-<!-- ═══════════════════════════ BLOG ═══════════════════════════ -->
-<div class="page" id="page-blog">
-  <div class="page-hero page-hero--light">
-    <div class="container"><p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Insights</p><h1 class="t-h2 reveal reveal-d1" style="color:var(--black)">Security knowledge, applied</h1><p class="t-body reveal reveal-d2" style="margin-top:1.5rem;color:var(--grey2)">Practical security guidance, methodology breakdowns, and vulnerability research from our team.</p></div>
-  </div>
-  <section class="section"><div class="container">
-    <div class="blog-grid">
-      <div class="blog-card"><span class="blog-tag">OWASP</span><div class="blog-title">OWASP Top 10 Explained: The Most Critical Web Application Risks</div><div class="blog-excerpt">A practitioner's breakdown of the OWASP Top 10 — what each vulnerability is, how it is exploited, and what effective remediation looks like.</div><div class="blog-meta"><span>Kaif Shaikh</span><span>8 min read — Coming Soon</span></div></div>
-      <div class="blog-card"><span class="blog-tag">Vulnerability Research</span><div class="blog-title">SQL Injection in 2024: Still Prevalent, Still Critical</div><div class="blog-excerpt">Why SQL injection remains one of the most frequently exploited vulnerabilities, with real-world examples and a complete analysis of detection and prevention.</div><div class="blog-meta"><span>Musaddik Khan</span><span>12 min read — Coming Soon</span></div></div>
-      <div class="blog-card"><span class="blog-tag">API Security</span><div class="blog-title">API Security Fundamentals: What Every Engineering Team Should Know</div><div class="blog-excerpt">The most consequential API security failures — broken object-level authorisation, JWT vulnerabilities, and rate limiting gaps — explained with testing methodology.</div><div class="blog-meta"><span>Kaif Shaikh</span><span>10 min read — Coming Soon</span></div></div>
-      <div class="blog-card"><span class="blog-tag">Methodology</span><div class="blog-title">Bug Bounty Methodology: A Structured Approach to Vulnerability Discovery</div><div class="blog-excerpt">How effective vulnerability researchers structure their reconnaissance, testing, and reporting — a practical methodology guide for disciplined security work.</div><div class="blog-meta"><span>Musaddik Khan</span><span>15 min read — Coming Soon</span></div></div>
-      <div class="blog-card"><span class="blog-tag">Engagement Process</span><div class="blog-title">What Happens During a VAPT Engagement</div><div class="blog-excerpt">A transparent account of what a professional VAPT engagement involves — from scope definition to final retest sign-off.</div><div class="blog-meta"><span>Kaif Shaikh</span><span>9 min read — Coming Soon</span></div></div>
-      <div class="blog-card"><span class="blog-tag">Secure Development</span><div class="blog-title">Secure Coding Practices That Prevent the Most Common Vulnerabilities</div><div class="blog-excerpt">Practical secure coding principles that eliminate the most common vulnerability classes before they ever reach a security assessment.</div><div class="blog-meta"><span>Musaddik Khan</span><span>11 min read — Coming Soon</span></div></div>
-    </div>
-    <div style="margin-top:4rem;padding:3rem;border:1px solid var(--rule-dk);text-align:center" class="reveal">
-      <h3 class="t-h3" style="margin-bottom:1rem">Articles in preparation</h3>
-      <p class="t-body" style="max-width:400px;margin:0 auto 2rem">Contact us to be notified when the first articles are published.</p>
-      <a class="btn-primary" href="#" onclick="nav('contact')">Get Notified</a>
-    </div>
-  </div></section>
-</div>
-
 <!-- ═══════════════════════════ REVIEWS ═══════════════════════════ -->
 <div class="page" id="page-reviews">
   <div class="page-hero"><div class="container--narrow"><p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Client Reviews</p><h1 class="t-h2 reveal reveal-d1">Trusted by organisations that treat security seriously</h1><p class="t-body reveal reveal-d2" style="margin-top:1.5rem">Verified outcomes from completed engagements.</p></div></div>
@@ -2011,13 +2031,17 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
     <div style="margin-top:5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start">
       <div><p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Send an Enquiry</p><h2 class="t-h2 reveal reveal-d1" style="font-size:clamp(1.5rem,3vw,2.25rem)">Tell us about your idea</h2><p class="t-body reveal reveal-d2" style="margin-top:1.25rem">Fill in the form and we will respond within one business day to discuss whether there is a productive fit.</p></div>
       <div class="reveal">
+        <form name="collaborate" method="POST" data-netlify="true" netlify-honeypot="bot-field2" action="/success.html">
+        <p style="display:none"><label>Skip: <input name="bot-field2"></label></p>
         <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your name"></div>
         <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com"></div>
         <div class="form-group"><label class="form-label">Collaboration Type</label>
           <select class="form-select"><option value="">Select...</option><option>Security Research</option><option>Bug Bounty Partnership</option><option>Tool Development</option><option>Joint Assessment</option><option>Mentorship</option><option>Other</option></select>
         </div>
         <div class="form-group"><label class="form-label">Your Proposal</label><textarea class="form-textarea" placeholder="Describe your idea and how you think we could work together effectively."></textarea></div>
-        <button class="form-submit">Submit Proposal</button>
+        <input type="hidden" name="form-name" value="collaborate">
+        <button type="submit" class="form-submit">Submit Proposal</button>
+        </form>
       </div>
     </div>
   </div></section>
@@ -2056,8 +2080,8 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
         </form>
       </div>
       <div class="contact-info-block reveal reveal-d1">
-        <div class="info-item"><div class="info-label">Primary Email</div><div class="info-value" id="email-primary"></div></div>
-        <div class="info-item"><div class="info-label">Business Email</div><div class="info-value" id="email-business"></div></div>
+        <div class="info-item"><div class="info-label">Email</div><div class="info-value" id="email-primary"></div></div>
+        <div class="info-item"><div class="info-label">Business Enquiries</div><div class="info-value" id="email-business"></div></div>
         <div class="info-item"><div class="info-label">Response Time</div><div class="info-value">Within one business day</div></div>
         <div class="info-item"><div class="info-label">Location</div><div class="info-value">India — Remote engagements worldwide</div></div>
         <div class="info-item"><div class="info-label">Confidentiality</div><div class="info-value" style="font-size:0.875rem;font-weight:400;color:var(--grey4);line-height:1.65">All enquiries are treated as confidential. A mutual NDA is executed before any technical discussion begins.</div></div>
@@ -2236,7 +2260,7 @@ function decodeEmail(encoded) {
     return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c.charCodeAt(0) + 13) ? c.charCodeAt(0) + 13 : c.charCodeAt(0) - 13);
   });
 }
-const primaryEmail = decodeEmail('nxvfsnixu5006@tznvy.pbz');
+const primaryEmail = decodeEmail('nyy@erxfpbg.pbz');
 const businessEmail = decodeEmail('qnzbafnyinber884010@tznvy.pbz');
 document.getElementById('email-primary').innerHTML = '<a href="mailto:' + primaryEmail + '">' + primaryEmail + '</a>';
 document.getElementById('email-business').innerHTML = '<a href="mailto:' + businessEmail + '">' + businessEmail + '</a>';
