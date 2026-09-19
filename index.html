@@ -36,7 +36,6 @@
   "email": "all@rexscot.com",
   "description": "Enterprise-grade penetration testing, VAPT, and application security consulting.",
   "founder": { "@type": "Person", "name": "Kaif Shaikh" },
-  "address": { "@type": "PostalAddress", "addressCountry": "IN" },
   "serviceType": ["Penetration Testing", "VAPT", "API Security", "Mobile Security", "Security Consulting"],
   "areaServed": "Worldwide"
 }
@@ -1344,7 +1343,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
     <div class="hero-content">
       <div class="hero-eyebrow" id="heroEyebrow">
         <span class="hero-eyebrow-line"></span>
-        <span class="t-eyebrow">Security Consulting — Private Limited</span>
+        <span class="t-eyebrow">Security Consulting</span>
       </div>
       <h1 class="t-display hero-title" id="heroTitle">
         Security <em>before</em><br>adversaries arrive
@@ -1507,7 +1506,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
     </div>
   </section>
 
-  <!-- WHY ETHICA -->
+  <!-- WHY REXSCOT -->
   <section class="section section--light">
     <div class="container">
       <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem">
@@ -1767,7 +1766,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
       <div class="footer-grid">
         <div>
           <div class="nav-logo"><img src="logo.png" alt="Rexscot" class="nav-logo-img"></div>
-          <p class="footer-brand-desc">Enterprise-grade penetration testing and security consulting for organisations that cannot afford to be breached. Private Limited — India.</p>
+          <p class="footer-brand-desc">Enterprise-grade penetration testing and security consulting for organisations that cannot afford to be breached.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
@@ -1792,7 +1791,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
         </div>
       </div>
       <div class="footer-bottom">
-        <span>Rexscot Private Limited — Security Consulting</span>
+        <span>Rexscot — Security Consulting</span>
         <span>Kaif Shaikh, Founder — Musaddik Khan, Co-Founder</span>
       </div>
     </div>
@@ -2031,14 +2030,14 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
     <div style="margin-top:5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start">
       <div><p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Send an Enquiry</p><h2 class="t-h2 reveal reveal-d1" style="font-size:clamp(1.5rem,3vw,2.25rem)">Tell us about your idea</h2><p class="t-body reveal reveal-d2" style="margin-top:1.25rem">Fill in the form and we will respond within one business day to discuss whether there is a productive fit.</p></div>
       <div class="reveal">
-        <form name="collaborate" method="POST" data-netlify="true" netlify-honeypot="bot-field2" action="/success.html">
-        <p style="display:none"><label>Skip: <input name="bot-field2"></label></p>
-        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your name"></div>
-        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="your@email.com"></div>
+        <form name="collaborate" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+        <input type="hidden" name="bot-field">
+        <div class="form-group"><label class="form-label" for="collab-name">Full Name</label><input id="collab-name" class="form-input" type="text" name="name" placeholder="Your name" required></div>
+        <div class="form-group"><label class="form-label" for="collab-email">Email</label><input id="collab-email" class="form-input" type="email" name="email" placeholder="your@email.com" required></div>
         <div class="form-group"><label class="form-label">Collaboration Type</label>
-          <select class="form-select"><option value="">Select...</option><option>Security Research</option><option>Bug Bounty Partnership</option><option>Tool Development</option><option>Joint Assessment</option><option>Mentorship</option><option>Other</option></select>
+          <select class="form-select" name="collaboration-type" required><option value="">Select...</option><option>Security Research</option><option>Bug Bounty Partnership</option><option>Tool Development</option><option>Joint Assessment</option><option>Mentorship</option><option>Other</option></select>
         </div>
-        <div class="form-group"><label class="form-label">Your Proposal</label><textarea class="form-textarea" placeholder="Describe your idea and how you think we could work together effectively."></textarea></div>
+        <div class="form-group"><label class="form-label">Your Proposal</label><textarea class="form-textarea" name="proposal" placeholder="Describe your idea and how you think we could work together effectively." required></textarea></div>
         <input type="hidden" name="form-name" value="collaborate">
         <button type="submit" class="form-submit">Submit Proposal</button>
         </form>
@@ -2261,7 +2260,7 @@ function decodeEmail(encoded) {
   });
 }
 const primaryEmail = decodeEmail('nyy@erkfpbg.pbz');
-const businessEmail = decodeEmail('qnzbafnyinber884010@tznvy.pbz');
+const businessEmail = decodeEmail('nyy@erkfpbg.pbz');
 document.getElementById('email-primary').innerHTML = '<a href="mailto:' + primaryEmail + '">' + primaryEmail + '</a>';
 document.getElementById('email-business').innerHTML = '<a href="mailto:' + businessEmail + '">' + businessEmail + '</a>';
 </script>
