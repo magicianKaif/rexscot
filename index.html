@@ -39,6 +39,17 @@
   "serviceType": ["Penetration Testing", "VAPT", "API Security", "Mobile Security", "Security Consulting"],
   "areaServed": "Worldwide"
 }
+
+// ─────────────────── VDP TOC ANCHOR LINKS ───────────────────
+document.addEventListener('click', e => {
+  const a = e.target.closest('.vdp-toc a');
+  if (!a) return;
+  e.preventDefault();
+  const id = a.getAttribute('href').replace('#', '');
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1300,6 +1311,282 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
 }
 .nav-logo:hover .nav-logo-img { opacity: 0.8; }
 
+
+/* ─────────────────────── SECURITY / VDP PAGE ─────────────────────── */
+.vdp-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.vdp-toc {
+  position: sticky;
+  top: 7rem;
+  background: var(--grey1);
+  border: 1px solid var(--rule-dk);
+  padding: 1.5rem;
+  max-height: calc(100vh - 9rem);
+  overflow-y: auto;
+}
+.vdp-toc h4 {
+  font-size: 0.688rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey3);
+  margin-bottom: 1rem;
+  font-family: var(--mono);
+}
+.vdp-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: toc;
+}
+.vdp-toc ol li {
+  counter-increment: toc;
+  margin-bottom: 0.35rem;
+}
+.vdp-toc ol li a {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--grey3);
+  line-height: 1.4;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.vdp-toc ol li a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  color: var(--grey3);
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+.vdp-toc ol li a:hover { color: var(--white); }
+.vdp-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule-dk);
+  scroll-margin-top: 5rem;
+}
+.vdp-section:last-child { border-bottom: none; }
+.vdp-section h2 {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.vdp-section h3 {
+  font-family: var(--body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--grey4);
+  margin: 1.5rem 0 0.75rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+.vdp-section p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--grey4);
+  margin-bottom: 0.85rem;
+}
+.vdp-section ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0.85rem;
+}
+.vdp-section ul li {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--grey4);
+  padding: 0.3rem 0 0.3rem 1.2rem;
+  position: relative;
+  border-bottom: 1px solid var(--rule-dk);
+}
+.vdp-section ul li:last-child { border-bottom: none; }
+.vdp-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--grey3);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+.vdp-notice {
+  border-left: 3px solid var(--grey3);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  background: rgba(255,255,255,0.02);
+}
+.vdp-notice p {
+  margin: 0;
+  font-size: 0.838rem;
+  color: var(--grey4);
+  font-style: italic;
+}
+.vdp-notice.warn {
+  border-left-color: #c0392b;
+  background: rgba(192,57,43,0.06);
+}
+.vdp-notice.warn p { color: #d4806a; }
+.vdp-notice.warn strong { color: #e06060; }
+.vdp-notice.legal {
+  border-left-color: var(--grey3);
+  background: rgba(255,255,255,0.03);
+}
+.vdp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.838rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  display: block;
+}
+.vdp-table th {
+  background: var(--grey1);
+  color: var(--grey5);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-dk);
+  white-space: nowrap;
+}
+.vdp-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--rule-dk);
+  color: var(--grey4);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.vdp-table tr:last-child td { border-bottom: none; }
+.vdp-table td:first-child { font-weight: 500; color: var(--white); white-space: nowrap; }
+.prohibited-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-dk);
+  border: 1px solid var(--rule-dk);
+  margin: 1rem 0;
+}
+.prohibited-card {
+  background: var(--black);
+  padding: 1.25rem 1.5rem;
+  transition: background 0.2s;
+}
+.prohibited-card:hover { background: #0f0f0f; }
+.prohibited-cat {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c0392b;
+  margin-bottom: 0.4rem;
+}
+.prohibited-desc {
+  font-size: 0.813rem;
+  line-height: 1.6;
+  color: var(--grey4);
+}
+.vdp-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule-dk);
+  border: 1px solid var(--rule-dk);
+  margin: 1.5rem 0;
+}
+.vdp-meta-item {
+  background: var(--grey1);
+  padding: 1rem 1.25rem;
+}
+.vdp-meta-label {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey3);
+  margin-bottom: 0.3rem;
+}
+.vdp-meta-value {
+  font-size: 0.875rem;
+  color: var(--white);
+}
+.vdp-meta-value a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.vdp-cta-box {
+  border: 1px solid var(--rule-dk);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.vdp-cta-box .cta-info p { font-size: 0.838rem; color: var(--grey4); margin: 0.25rem 0 0; }
+.vdp-cta-box .cta-info strong { font-size: 0.9rem; color: var(--white); }
+.workflow-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-dk);
+  border: 1px solid var(--rule-dk);
+  margin: 1rem 0;
+}
+.workflow-step {
+  background: var(--black);
+  padding: 1.25rem;
+}
+.workflow-num {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  color: var(--grey3);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+.workflow-title {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+.workflow-body { font-size: 0.775rem; color: var(--grey3); line-height: 1.55; }
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid;
+}
+.badge-pub { color: #7aab7a; border-color: #7aab7a40; }
+.badge-draft { color: var(--grey4); border-color: var(--rule-dk); }
+.badge-legal { color: #e06060; border-color: #e0606040; }
+@media (max-width: 1024px) {
+  .vdp-layout { grid-template-columns: 1fr; }
+  .vdp-toc { position: static; max-height: none; }
+  .vdp-toc ol { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.25rem; }
+  .vdp-toc ol li a::before { display: none; }
+  .workflow-steps { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .prohibited-grid { grid-template-columns: 1fr; }
+  .vdp-meta-grid { grid-template-columns: 1fr; }
+  .vdp-cta-box { flex-direction: column; align-items: flex-start; }
+  .vdp-toc ol { grid-template-columns: 1fr 1fr; }
+  .workflow-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .vdp-toc ol { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -1568,7 +1855,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
             <div class="finding-row"><span class="sev sev-med">Medium</span><span class="finding-name">Insecure Direct Object Reference on document API</span></div>
           </div>
           <div style="margin-top:2.5rem" class="reveal">
-            <a class="btn-primary" href="Rexscot_Sample_VAPT_Report.pdf" download="Rexscot_Sample_VAPT_Report.pdf">Request Sample Report</a>
+<a class="btn-primary" href="Rexscot_Sample_VAPT_Report.pdf" download="Rexscot_Sample_VAPT_Report.pdf">Request Sample Report</a>
           </div>
         </div>
         <div class="reveal reveal-d1">
@@ -1782,6 +2069,8 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
           <a href="#" onclick="nav('about')">About Us</a>
                   <a href="#" onclick="nav('reviews')">Client Reviews</a>
           <a href="#" onclick="nav('collaborate')">Collaborate</a>
+          <a href="#" onclick="nav('security')">Security Policy</a>
+          <a href="#" onclick="nav('privacy')">Privacy Policy</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
@@ -1792,6 +2081,7 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
       </div>
       <div class="footer-bottom">
         <span>Rexscot — Security Consulting</span>
+        <p>&copy; 2026 Rexscot Security. All rights reserved.</p>
         <span>Kaif Shaikh, Founder — Musaddik Khan, Co-Founder</span>
       </div>
     </div>
@@ -2067,7 +2357,9 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
             <select class="form-select" name="service" required><option value="">Select a service...</option><option>Web Application Penetration Testing</option><option>API Security Testing</option><option>VAPT</option><option>Mobile Security Testing</option><option>Desktop Application Testing</option><option>Secure Code Review</option><option>Security Consulting</option><option>Unsure — Require Guidance</option></select>
           </div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Budget Range</label><select class="form-select" name="budget"><option value="">Select range...</option><option>₹50,000 INR</option><option>Open to discuss (Above ₹50,000)</option></select></div>
+            <div class="form-group"><label class="form-label">Budget Range</label>
+              <select class="form-select" name="budget"><option value="">Select range...</option><option>Below Rs 50,000</option><option>Rs 50,000 to Rs 1,00,000</option><option>Rs 1,00,000 to Rs 2,50,000</option><option>Rs 2,50,000 and above</option><option>Open to discussion</option></select>
+            </div>
             <div class="form-group"><label class="form-label">Preferred Contact Method</label>
               <select class="form-select" name="contact-method"><option>Email</option><option>Video Call</option><option>Phone</option></select>
             </div>
@@ -2085,6 +2377,841 @@ button { font-family: var(--body); cursor: pointer; border: none; background: no
       </div>
     </div>
   </div></section>
+</div>
+
+<!-- ═══════════════════════════ SECURITY / VDP ═══════════════════════════ -->
+<div class="page" id="page-security">
+  <div class="page-hero">
+    <div class="container--narrow">
+      <p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Classification: Public</p>
+      <h1 class="t-h2 reveal reveal-d1">Vulnerability Disclosure Policy</h1>
+      <p class="t-body reveal reveal-d2" style="margin-top:1rem;max-width:520px">Rexscot welcomes responsible security research. This policy defines how to report vulnerabilities affecting Rexscot's own systems and what researchers can expect from us.</p>
+      <div class="vdp-meta-grid reveal reveal-d3" style="margin-top:2rem">
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Version</div><div class="vdp-meta-value">1.0</div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Status</div><div class="vdp-meta-value"><span class="badge badge-draft">Draft — Pending Legal Review</span></div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Classification</div><div class="vdp-meta-value"><span class="badge badge-pub">Public</span></div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Security Contact</div><div class="vdp-meta-value"><a href="mailto:all@rexscot.com?subject=%5BSECURITY%20REPORT%5D">all@rexscot.com</a></div></div>
+      </div>
+      <div class="vdp-cta-box reveal" style="margin-top:2rem">
+        <div class="cta-info">
+          <strong>Found a security issue?</strong>
+          <p>Send a detailed report to our security contact. We take every responsible disclosure seriously.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;flex-shrink:0">
+          <a class="btn-primary" href="mailto:all@rexscot.com?subject=%5BSECURITY%20REPORT%5D">Report a Vulnerability</a>
+          <a class="btn-ghost" href="mailto:all@rexscot.com?subject=%5BCRITICAL%20SECURITY%20REPORT%5D" style="font-size:0.75rem;color:#e06060">Critical Report</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="vdp-layout">
+
+        <!-- TOC -->
+        <aside class="vdp-toc reveal">
+          <h4>Contents</h4>
+          <ol>
+            <li><a href="#purpose">Purpose</a></li>
+            <li><a href="#scope">Scope</a></li>
+            <li><a href="#reporting-channel">Reporting Channel</a></li>
+            <li><a href="#what-to-include">What to Include</a></li>
+            <li><a href="#safe-practices">Safe Reporting Practices</a></li>
+            <li><a href="#permitted-research">Permitted Research</a></li>
+            <li><a href="#prohibited-activities">Prohibited Activities</a></li>
+            <li><a href="#test-data">Test Data &amp; Accounts</a></li>
+            <li><a href="#third-party">Third-Party Services</a></li>
+            <li><a href="#client-systems">Client Systems</a></li>
+            <li><a href="#report-handling">Report Handling</a></li>
+            <li><a href="#communication">Communication</a></li>
+            <li><a href="#critical">Critical Vulnerabilities</a></li>
+            <li><a href="#responsible-disclosure">Responsible Disclosure</a></li>
+            <li><a href="#public-disclosure">Public Disclosure</a></li>
+            <li><a href="#duplicates">Duplicates &amp; Out-of-Scope</a></li>
+            <li><a href="#safe-harbor">Safe Harbor</a></li>
+            <li><a href="#data-confidentiality">Data Confidentiality</a></li>
+            <li><a href="#ai-reporting">AI-Assisted Reporting</a></li>
+            <li><a href="#report-quality">Report Quality</a></li>
+            <li><a href="#limitations">Policy Limitations</a></li>
+            <li><a href="#policy-changes">Policy Changes</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#document-control">Document Control</a></li>
+          </ol>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="vdp-content">
+
+          <!-- 1 PURPOSE -->
+          <section class="vdp-section" id="purpose">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">01</p>
+            <h2>Purpose</h2>
+            <p>Rexscot is a cybersecurity consulting firm that provides penetration testing, vulnerability assessment, and security consulting services to organisations across India and internationally. We take the security of our own systems and public-facing assets seriously.</p>
+            <p>This Vulnerability Disclosure Policy (VDP) establishes a clear and transparent process for security researchers, users, customers, and members of the broader security community to responsibly report suspected vulnerabilities affecting Rexscot's own published in-scope assets.</p>
+            <p>Rexscot believes in the value of responsible security research and recognises that external researchers may sometimes identify potential security issues before internal teams.</p>
+            <div class="vdp-notice">
+              <p>This policy applies exclusively to Rexscot's own published in-scope assets. It does <strong>not</strong> cover client systems, client infrastructure, or third-party services. Separate engagement documentation governs all client security testing.</p>
+            </div>
+          </section>
+
+          <!-- 2 SCOPE -->
+          <section class="vdp-section" id="scope">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">02</p>
+            <h2>Scope</h2>
+
+            <h3>2A — In-Scope Assets</h3>
+            <p>The following Rexscot-operated assets are within the scope of this policy. Researchers should verify current scope before conducting any testing.</p>
+            <table class="vdp-table">
+              <thead><tr><th>Asset Type</th><th>Asset / Identifier</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Primary Website</td><td>https://rexscot.com</td><td>Public-facing site</td></tr>
+              </tbody>
+            </table>
+            <div class="vdp-notice">
+              <p>Scope may be updated periodically. Always verify current in-scope assets before testing. If uncertain, contact <a href="mailto:all@rexscot.com" style="color:var(--white)">all@rexscot.com</a> before conducting any testing.</p>
+            </div>
+
+            <h3>2B — Out-of-Scope Assets</h3>
+            <ul>
+              <li>Infrastructure not listed as in-scope above</li>
+              <li>Third-party services, SaaS providers, and cloud platforms used by Rexscot</li>
+              <li>Internet infrastructure not operated by Rexscot</li>
+              <li>Systems belonging to Rexscot's clients or customers</li>
+              <li>Employee personal accounts and personal devices</li>
+              <li>Physical premises and physical security</li>
+              <li>Social engineering targets including employees, contractors, or partners</li>
+            </ul>
+
+            <h3>2C — Third-Party Systems</h3>
+            <p>Rexscot relies on various third-party providers. These systems are not within scope. Researchers who identify a vulnerability in a third-party system that affects Rexscot may report it to the relevant vendor directly and notify Rexscot separately at all@rexscot.com.</p>
+
+            <h3>2D — Client and Customer Systems</h3>
+            <div class="vdp-notice warn">
+              <p><strong>Important:</strong> Rexscot provides security testing services to client organisations. A researcher must <strong>not</strong> assume that any client domain, application, server, IP address, API, or cloud account is authorised for testing merely because Rexscot works with that organisation. Client systems require separate, written authorisation. Testing client systems without authorisation may constitute a criminal offence.</p>
+            </div>
+          </section>
+
+          <!-- 3 REPORTING CHANNEL -->
+          <section class="vdp-section" id="reporting-channel">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">03</p>
+            <h2>Reporting Channel</h2>
+            <table class="vdp-table">
+              <thead><tr><th>Channel</th><th>Details</th></tr></thead>
+              <tbody>
+                <tr><td>Security Email</td><td><a href="mailto:all@rexscot.com?subject=%5BSECURITY%20REPORT%5D" style="color:var(--white)">all@rexscot.com</a></td></tr>
+                <tr><td>Website</td><td>https://rexscot.com</td></tr>
+                <tr><td>Critical Reports</td><td>Use subject line: <code style="font-family:var(--mono);color:#e06060;font-size:0.8rem">[CRITICAL SECURITY REPORT]</code></td></tr>
+              </tbody>
+            </table>
+            <p>Rexscot recommends researchers use encrypted communication where possible.</p>
+          </section>
+
+          <!-- 4 WHAT TO INCLUDE -->
+          <section class="vdp-section" id="what-to-include">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">04</p>
+            <h2>What to Include in a Vulnerability Report</h2>
+            <p>A complete, well-structured report enables Rexscot to validate and remediate findings efficiently.</p>
+            <table class="vdp-table">
+              <thead><tr><th>Field</th><th>Required</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td>Researcher Name / Alias</td><td>Optional</td><td>May be withheld for anonymity</td></tr>
+                <tr><td>Contact Email</td><td><strong>Required</strong></td><td>For follow-up and status updates</td></tr>
+                <tr><td>Affected Asset</td><td><strong>Required</strong></td><td>Domain, URL, application, or service identifier</td></tr>
+                <tr><td>Vulnerability Type</td><td><strong>Required</strong></td><td>e.g. SQL Injection, XSS, IDOR, Auth Bypass</td></tr>
+                <tr><td>Description</td><td><strong>Required</strong></td><td>Clear explanation of the vulnerability and its behaviour</td></tr>
+                <tr><td>Preconditions</td><td>Recommended</td><td>Authentication state, required permissions, etc.</td></tr>
+                <tr><td>Reproduction Steps</td><td><strong>Required</strong></td><td>Exact step-by-step instructions to reproduce the issue</td></tr>
+                <tr><td>Proof of Concept</td><td>Recommended</td><td>Code, payload, screenshot, or HTTP request/response</td></tr>
+                <tr><td>Affected Endpoints / URLs</td><td><strong>Required</strong></td><td>Exact URLs, API endpoints, or parameters affected</td></tr>
+                <tr><td>Business Impact</td><td>Recommended</td><td>What could an attacker achieve by exploiting this?</td></tr>
+                <tr><td>Timestamp / Timezone</td><td>Recommended</td><td>When the issue was discovered and tested</td></tr>
+                <tr><td>Test Accounts Used</td><td>If applicable</td><td>Any test accounts used — do <strong>not</strong> submit passwords</td></tr>
+              </tbody>
+            </table>
+            <div class="vdp-notice">
+              <p>Minimise sensitive data in reports. Do not submit production credentials, private keys, API secrets, or third-party personal data.</p>
+            </div>
+          </section>
+
+          <!-- 5 SAFE PRACTICES -->
+          <section class="vdp-section" id="safe-practices">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">05</p>
+            <h2>Safe Reporting Practices</h2>
+            <p>Researchers are expected to conduct vulnerability discovery responsibly and minimise potential harm to Rexscot systems, data, and users.</p>
+            <ul>
+              <li>Minimise access to data beyond what is strictly necessary to confirm the vulnerability</li>
+              <li>Avoid accessing, modifying, deleting, or exfiltrating user data or production data</li>
+              <li>Stop testing immediately once sufficient evidence has been gathered</li>
+              <li>Avoid disrupting services, creating outages, or degrading system performance</li>
+              <li>Avoid creating or deploying persistence mechanisms, backdoors, or malware</li>
+              <li>Protect any sensitive information unintentionally accessed during research</li>
+              <li>Promptly notify Rexscot if sensitive or personal information was unexpectedly encountered</li>
+              <li>Securely delete any sensitive data collected once it is no longer needed for the report</li>
+            </ul>
+          </section>
+
+          <!-- 6 PERMITTED RESEARCH -->
+          <section class="vdp-section" id="permitted-research">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">06</p>
+            <h2>Permitted Security Research</h2>
+            <p>Within the published scope defined in Section 2A, the following types of low-impact research activities may be acceptable:</p>
+            <ul>
+              <li>Passive reconnaissance of publicly accessible information</li>
+              <li>Identification of publicly visible security misconfigurations</li>
+              <li>Low-impact vulnerability verification using controlled proof-of-concept</li>
+              <li>Authentication and authorisation testing strictly within published scope</li>
+              <li>Non-destructive validation of reported issues</li>
+              <li>Automated scanning of limited scope with minimal traffic</li>
+            </ul>
+            <div class="vdp-notice warn">
+              <p><strong>Submitting a vulnerability report does NOT authorise broader security testing.</strong> Research not covered by published scope requires separate written authorisation from Rexscot.</p>
+            </div>
+          </section>
+
+          <!-- 7 PROHIBITED ACTIVITIES -->
+          <section class="vdp-section" id="prohibited-activities">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">07</p>
+            <h2>Prohibited Activities</h2>
+            <p>The following activities are explicitly prohibited under this policy regardless of intent:</p>
+            <div class="prohibited-grid">
+              <div class="prohibited-card"><div class="prohibited-cat">Service Disruption</div><div class="prohibited-desc">DoS, DDoS, load testing, stress testing, or any disruption of services</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Data Manipulation</div><div class="prohibited-desc">Modifying, deleting, corrupting, encrypting, or exfiltrating production data</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Malware &amp; Persistence</div><div class="prohibited-desc">Deploying malware, ransomware, backdoors, webshells, or persistence mechanisms</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Social Engineering</div><div class="prohibited-desc">Phishing, vishing, or pretexting against employees, partners, or clients</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Physical Attacks</div><div class="prohibited-desc">Physical intrusion or attacks against Rexscot premises</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Credential Abuse</div><div class="prohibited-desc">Password spraying, brute-force attacks, or credential stuffing</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Out-of-Scope Systems</div><div class="prohibited-desc">Testing any system, domain, IP, or service not listed as in-scope</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Client Systems</div><div class="prohibited-desc">Any testing of Rexscot client or customer systems without separate written authorisation</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Third-Party Infrastructure</div><div class="prohibited-desc">Exploiting third-party provider vulnerabilities via Rexscot</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Unsafe PoC</div><div class="prohibited-desc">Proof-of-concept exploits creating unacceptable operational, legal, or privacy risk</div></div>
+              <div class="prohibited-card"><div class="prohibited-cat">Unnecessary Exfiltration</div><div class="prohibited-desc">Exfiltrating data beyond what is needed to confirm and document a vulnerability</div></div>
+            </div>
+          </section>
+
+          <!-- 8 TEST DATA -->
+          <section class="vdp-section" id="test-data">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">08</p>
+            <h2>Test Data and Account Safety</h2>
+            <ul>
+              <li>Use researcher-owned or designated test accounts — do not use real user accounts without explicit permission</li>
+              <li>Do not submit real production credentials, passwords, API keys, or private keys in reports</li>
+              <li>Do not retain or publish authentication tokens or session cookies discovered during research</li>
+              <li>Avoid collecting personal information about Rexscot employees, clients, or users</li>
+              <li>Do not access client data beyond what is necessary to confirm the vulnerability</li>
+              <li>If real credentials are inadvertently discovered, notify Rexscot immediately and do not use or retain them</li>
+            </ul>
+          </section>
+
+          <!-- 9 THIRD PARTY -->
+          <section class="vdp-section" id="third-party">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">09</p>
+            <h2>Third-Party Services</h2>
+            <p>Rexscot uses third-party services as part of its operations. Third-party infrastructure is not automatically within scope.</p>
+            <p>Researchers who identify a vulnerability involving a third-party provider should report directly to the relevant vendor's own disclosure programme and may notify Rexscot separately where the issue has direct implications for Rexscot's security posture. Do not exploit or pivot through third-party vulnerabilities to attack Rexscot or its clients.</p>
+          </section>
+
+          <!-- 10 CLIENT SYSTEMS -->
+          <section class="vdp-section" id="client-systems">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">10</p>
+            <h2>Client and Customer Systems</h2>
+            <div class="vdp-notice warn">
+              <p><strong>This section is critical.</strong> Rexscot provides penetration testing and security consulting to client organisations. As a result, Rexscot may be associated with a wide range of client domains, applications, and infrastructure.</p>
+            </div>
+            <p>A vulnerability researcher <strong>must not</strong> assume that any of the following are authorised for testing under this policy:</p>
+            <ul>
+              <li>Client or customer domains and applications</li>
+              <li>Client or customer servers, IP ranges, or cloud accounts</li>
+              <li>APIs or infrastructure that Rexscot manages on behalf of a client</li>
+            </ul>
+            <p>Any security testing of client systems requires a separate, written Authorisation to Test signed by the relevant client, together with a formal Rexscot engagement agreement. Submitting a contact form or vulnerability report to Rexscot does not constitute client authorisation.</p>
+            <div class="vdp-notice warn">
+              <p>Unauthorised testing of client systems may constitute a criminal offence under applicable Indian and international law.</p>
+            </div>
+          </section>
+
+          <!-- 11 REPORT HANDLING -->
+          <section class="vdp-section" id="report-handling">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">11</p>
+            <h2>Report Handling Process</h2>
+            <div class="workflow-steps">
+              <div class="workflow-step"><div class="workflow-num">01</div><div class="workflow-title">Receipt</div><div class="workflow-body">Report received at all@rexscot.com. Acknowledgement where practical.</div></div>
+              <div class="workflow-step"><div class="workflow-num">02</div><div class="workflow-title">Initial Review</div><div class="workflow-body">Assessment of completeness, scope, and severity.</div></div>
+              <div class="workflow-step"><div class="workflow-num">03</div><div class="workflow-title">Scope Verification</div><div class="workflow-body">Confirmation that reported asset falls within published scope.</div></div>
+              <div class="workflow-step"><div class="workflow-num">04</div><div class="workflow-title">Technical Validation</div><div class="workflow-body">Internal technical assessment to confirm and reproduce the vulnerability.</div></div>
+              <div class="workflow-step"><div class="workflow-num">05</div><div class="workflow-title">Risk Assessment</div><div class="workflow-body">Evaluation of severity and potential business impact.</div></div>
+              <div class="workflow-step"><div class="workflow-num">06</div><div class="workflow-title">Remediation</div><div class="workflow-body">Internal coordination and deployment of fixes or mitigations.</div></div>
+              <div class="workflow-step"><div class="workflow-num">07</div><div class="workflow-title">Researcher Update</div><div class="workflow-body">Where appropriate, Rexscot may communicate the outcome to the reporting researcher.</div></div>
+              <div class="workflow-step"><div class="workflow-num">08</div><div class="workflow-title">Closure</div><div class="workflow-body">Formal closure following verification of remediation.</div></div>
+            </div>
+            <div class="vdp-notice">
+              <p>Rexscot does not commit to fixed response or remediation timelines. Response times may vary depending on report volume, severity, and operational capacity.</p>
+            </div>
+          </section>
+
+          <!-- 12 COMMUNICATION -->
+          <section class="vdp-section" id="communication">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">12</p>
+            <h2>Communication with Researchers</h2>
+            <p>Rexscot may communicate with researchers at various stages:</p>
+            <ul>
+              <li>Acknowledgement of receipt where practical</li>
+              <li>Requests for additional information or clarification</li>
+              <li>Notification of validation outcome (confirmed, out-of-scope, duplicate, or not reproducible)</li>
+              <li>Notification of remediation where appropriate</li>
+              <li>Closure of the report</li>
+            </ul>
+            <p>Rexscot does not guarantee a response to every report. Duplicate, out-of-scope, and invalid reports may not receive an individual response. All communications should be directed to <a href="mailto:all@rexscot.com" style="color:var(--white)">all@rexscot.com</a>.</p>
+          </section>
+
+          <!-- 13 CRITICAL -->
+          <section class="vdp-section" id="critical">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">13</p>
+            <h2>Critical Vulnerabilities</h2>
+            <p>Reports involving any of the following should be clearly marked as <code style="font-family:var(--mono);color:#e06060;font-size:0.85rem">[CRITICAL SECURITY REPORT]</code> in the subject line:</p>
+            <ul>
+              <li>Active exploitation or evidence of ongoing attack</li>
+              <li>Remote code execution or arbitrary command execution</li>
+              <li>Authentication bypass or complete access control failure</li>
+              <li>Significant unauthorised access to sensitive or personal data</li>
+              <li>Major production system impact or instability</li>
+              <li>Vulnerabilities with direct financial implications</li>
+            </ul>
+            <div class="vdp-cta-box">
+              <div class="cta-info">
+                <strong>Critical reports</strong>
+                <p>Send to all@rexscot.com with subject: <code style="font-family:var(--mono);color:#e06060;font-size:0.8rem">[CRITICAL SECURITY REPORT]</code></p>
+              </div>
+              <a class="btn-primary" href="mailto:all@rexscot.com?subject=%5BCRITICAL%20SECURITY%20REPORT%5D" style="background:#c0392b;color:var(--white)">Send Critical Report</a>
+            </div>
+          </section>
+
+          <!-- 14 RESPONSIBLE DISCLOSURE -->
+          <section class="vdp-section" id="responsible-disclosure">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">14</p>
+            <h2>Responsible Disclosure</h2>
+            <p>Rexscot requests that researchers allow reasonable time to investigate, validate, and remediate reported vulnerabilities before any public disclosure.</p>
+            <p>Researchers are encouraged to coordinate disclosure timing with Rexscot. Premature public disclosure of an unpatched vulnerability may harm Rexscot's clients, users, and security posture.</p>
+            <p>Where coordinated disclosure is agreed, Rexscot may consider acknowledging the researcher's contribution, subject to operational and legal considerations. Rexscot does not guarantee public credit, CVE assignment, hall-of-fame listing, or blog recognition.</p>
+            <div class="vdp-notice">
+              <p>Rexscot does not impose a mandatory embargo period. Researchers are asked to act in good faith and contact all@rexscot.com to discuss disclosure timing.</p>
+            </div>
+          </section>
+
+          <!-- 15 PUBLIC DISCLOSURE -->
+          <section class="vdp-section" id="public-disclosure">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">15</p>
+            <h2>Public Disclosure</h2>
+            <p>Following remediation, Rexscot may consider coordinated public disclosure where appropriate and where the researcher has acted in accordance with this policy.</p>
+            <p>Rexscot does not promise: public credit or attribution, CVE ID assignment, hall-of-fame listings, blog posts about specific reports, or monetary compensation of any kind.</p>
+            <div class="vdp-notice warn">
+              <p>This policy is <strong>not</strong> a bug-bounty programme. No financial rewards are offered or implied.</p>
+            </div>
+          </section>
+
+          <!-- 16 DUPLICATES -->
+          <section class="vdp-section" id="duplicates">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">16</p>
+            <h2>Duplicate and Out-of-Scope Reports</h2>
+            <h3>Duplicates</h3>
+            <p>Multiple researchers may independently identify the same underlying vulnerability. Rexscot may classify subsequent reports as duplicates and will acknowledge them where practical.</p>
+            <h3>Out-of-Scope / Invalid</h3>
+            <p>Reports may be classified as out-of-scope or invalid where they involve assets not in published scope, third-party or client systems, theoretical issues without reproducible evidence, automated scanner output without manual validation, or informational observations without security impact.</p>
+          </section>
+
+          <!-- 17 SAFE HARBOR -->
+          <section class="vdp-section" id="safe-harbor">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">17</p>
+            <h2>Safe Harbor</h2>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>This section reflects Rexscot's intended approach and has not been reviewed by qualified legal counsel. It does not constitute a legal guarantee or binding commitment. Applicable Indian and international law may still apply.</p>
+            </div>
+            <p>Rexscot does not intend to pursue legal action against researchers who:</p>
+            <ul>
+              <li>Conduct research within published in-scope assets (Section 2A)</li>
+              <li>Comply with all restrictions in this policy, particularly Section 7 (Prohibited Activities)</li>
+              <li>Report vulnerabilities promptly and in good faith through the designated reporting channel</li>
+              <li>Minimise harm in accordance with Section 5 (Safe Reporting Practices)</li>
+              <li>Do not exploit vulnerabilities beyond confirming the finding</li>
+              <li>Do not publicly disclose before Rexscot has had reasonable time to investigate</li>
+            </ul>
+            <p>This section does <strong>not</strong>: authorise testing outside published scope, override applicable law, waive the legal rights of third parties including Rexscot's clients, create a contractual relationship, or constitute a legal defence against criminal or civil proceedings.</p>
+          </section>
+
+          <!-- 18 DATA CONFIDENTIALITY -->
+          <section class="vdp-section" id="data-confidentiality">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">18</p>
+            <h2>Data Confidentiality</h2>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>Data handling obligations under applicable privacy law (including the DPDP Act) should be reviewed by qualified legal counsel.</p>
+            </div>
+            <p>Researchers who submit reports are expected to:</p>
+            <ul>
+              <li>Minimise access to sensitive data beyond confirming the vulnerability</li>
+              <li>Not publish, share, or distribute any confidential information encountered during research</li>
+              <li>Securely delete any sensitive data collected as soon as it is no longer needed for the report</li>
+              <li>Notify Rexscot if sensitive personal data, client data, or credentials were unintentionally accessed</li>
+            </ul>
+            <p>Rexscot will treat vulnerability reports submitted in good faith with appropriate confidentiality. Rexscot does not guarantee absolute confidentiality in all circumstances, including where legal or regulatory obligations may require disclosure.</p>
+          </section>
+
+          <!-- 19 AI -->
+          <section class="vdp-section" id="ai-reporting">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">19</p>
+            <h2>AI-Assisted Reporting and Research</h2>
+            <p>Rexscot acknowledges that researchers may use AI-assisted tools and workflows. The following principles apply:</p>
+            <ul>
+              <li>AI-generated reports may be submitted; the researcher takes full responsibility for accuracy and completeness</li>
+              <li>Unsupported AI-generated claims without reproducible evidence may require additional supporting information</li>
+              <li>Researchers must not submit Rexscot's confidential information to public AI systems to generate a report</li>
+              <li>Fabricated or misleading AI-generated evidence is not acceptable and may result in the report being dismissed</li>
+              <li>Researchers remain personally responsible for the accuracy, legality, and ethics of their research regardless of AI tool usage</li>
+            </ul>
+          </section>
+
+          <!-- 20 REPORT QUALITY -->
+          <section class="vdp-section" id="report-quality">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">20</p>
+            <h2>Report Quality</h2>
+            <p>High-quality reports enable faster triage and remediation. A useful report includes:</p>
+            <ul>
+              <li>A clear, descriptive title summarising the issue</li>
+              <li>Exact, reproducible steps to recreate the vulnerability</li>
+              <li>The specific assets, endpoints, or parameters affected</li>
+              <li>Evidence of exploitability — a working proof of concept, HTTP request/response, or screenshot</li>
+              <li>A concise description of the potential business or security impact</li>
+              <li>The conditions required for exploitation (authentication state, permissions, etc.)</li>
+              <li>Any relevant technical context such as server headers or error messages</li>
+            </ul>
+            <p>Reports that are vague, non-reproducible, or rely solely on automated scanner output without manual validation may be deprioritised or classified as informational.</p>
+          </section>
+
+          <!-- 21 LIMITATIONS -->
+          <section class="vdp-section" id="limitations">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">21</p>
+            <h2>Policy Limitations</h2>
+            <p>This Vulnerability Disclosure Policy:</p>
+            <ul>
+              <li>Is <strong>not</strong> a Master Services Agreement, Statement of Work, or Rules of Engagement</li>
+              <li>Does <strong>not</strong> create a client engagement or contractual relationship by virtue of submitting a report</li>
+              <li>Does <strong>not</strong> constitute an authorisation to conduct security testing beyond published scope</li>
+              <li>Does <strong>not</strong> guarantee remediation of any reported issue</li>
+              <li>Does <strong>not</strong> offer or imply financial compensation or bug-bounty rewards</li>
+              <li>Does <strong>not</strong> override applicable law or regulation</li>
+            </ul>
+            <p>All formal security testing engagements require a separate Master Services Agreement, Statement of Work, and signed Rules of Engagement / Authorisation to Test document.</p>
+          </section>
+
+          <!-- 22 POLICY CHANGES -->
+          <section class="vdp-section" id="policy-changes">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">22</p>
+            <h2>Policy Changes</h2>
+            <p>Rexscot may update this Vulnerability Disclosure Policy from time to time. The current version is published at <a href="https://rexscot.com/security" style="color:var(--white)">https://rexscot.com/security</a> and <a href="https://rexscot.com/.well-known/security.txt" style="color:var(--white)">/.well-known/security.txt</a>.</p>
+            <p>Changes are effective from the date indicated in the document control table. Researchers are encouraged to review the current version before submitting reports.</p>
+          </section>
+
+          <!-- 23 CONTACT -->
+          <section class="vdp-section" id="contact">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">23</p>
+            <h2>Contact</h2>
+            <table class="vdp-table">
+              <thead><tr><th>Detail</th><th>Information</th></tr></thead>
+              <tbody>
+                <tr><td>Organisation</td><td>Rexscot — Cybersecurity Consulting</td></tr>
+                <tr><td>Security Contact</td><td><a href="mailto:all@rexscot.com?subject=%5BSECURITY%20REPORT%5D" style="color:var(--white)">all@rexscot.com</a></td></tr>
+                <tr><td>Website</td><td><a href="https://rexscot.com" style="color:var(--white)">https://rexscot.com</a></td></tr>
+              </tbody>
+            </table>
+            <div class="vdp-cta-box" style="margin-top:2rem">
+              <div class="cta-info">
+                <strong>Ready to submit a report?</strong>
+                <p>Include the affected asset, vulnerability type, reproduction steps, and proof of concept.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;flex-shrink:0">
+                <a class="btn-primary" href="mailto:all@rexscot.com?subject=%5BSECURITY%20REPORT%5D">Report a Vulnerability</a>
+                <a class="btn-ghost" href="mailto:all@rexscot.com?subject=%5BCRITICAL%20SECURITY%20REPORT%5D" style="font-size:0.75rem;color:#e06060">Critical Report</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 24 DOCUMENT CONTROL -->
+          <section class="vdp-section" id="document-control">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">24</p>
+            <h2>Document Control</h2>
+            <table class="vdp-table">
+              <thead><tr><th>Version</th><th>Date</th><th>Change</th><th>Owner</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>1.0</td><td>2025</td><td>Initial draft</td><td>Rexscot</td><td><span class="badge badge-draft">Draft</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+        </div><!-- /vdp-content -->
+      </div><!-- /vdp-layout -->
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════ PRIVACY POLICY ═══════════════════════════ -->
+<div class="page" id="page-privacy">
+  <div class="page-hero">
+    <div class="container--narrow">
+      <p class="t-eyebrow reveal" style="margin-bottom:1.25rem">Classification: Public</p>
+      <h1 class="t-h2 reveal reveal-d1">Privacy Policy</h1>
+      <p class="t-body reveal reveal-d2" style="margin-top:1rem;max-width:520px">This policy explains what information Rexscot collects through this website, how it is used, and how to contact us about privacy matters.</p>
+      <div class="vdp-meta-grid reveal reveal-d3" style="margin-top:2rem">
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Version</div><div class="vdp-meta-value">1.0</div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Status</div><div class="vdp-meta-value"><span class="badge badge-draft">Draft — Pending Legal Review</span></div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Classification</div><div class="vdp-meta-value"><span class="badge badge-pub">Public</span></div></div>
+        <div class="vdp-meta-item"><div class="vdp-meta-label">Privacy Contact</div><div class="vdp-meta-value"><a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D">all@rexscot.com</a></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="vdp-layout">
+
+        <!-- TOC -->
+        <aside class="vdp-toc reveal">
+          <h4>Contents</h4>
+          <ol>
+            <li><a href="#pp-introduction">Introduction</a></li>
+            <li><a href="#pp-scope">Scope</a></li>
+            <li><a href="#information-we-collect">Information We Collect</a></li>
+            <li><a href="#pp-contact-info">Contact &amp; Communication</a></li>
+            <li><a href="#pp-vuln-reports">Vulnerability Reports</a></li>
+            <li><a href="#how-we-use-information">How We Use Information</a></li>
+            <li><a href="#pp-legal-basis">Legal Basis</a></li>
+            <li><a href="#cookies">Cookies &amp; Storage</a></li>
+            <li><a href="#pp-analytics">Analytics</a></li>
+            <li><a href="#pp-third-parties">Third-Party Services</a></li>
+            <li><a href="#data-sharing">Data Sharing</a></li>
+            <li><a href="#data-retention">Data Retention</a></li>
+            <li><a href="#security">Data Security</a></li>
+            <li><a href="#pp-breach">Security Incidents</a></li>
+            <li><a href="#your-rights">Your Rights</a></li>
+            <li><a href="#pp-minors">Children &amp; Minors</a></li>
+            <li><a href="#pp-transfers">International Transfers</a></li>
+            <li><a href="#pp-client-data">Client Engagement Data</a></li>
+            <li><a href="#pp-ai">AI &amp; Automated Tools</a></li>
+            <li><a href="#pp-links">External Links</a></li>
+            <li><a href="#privacy-contact">Privacy Contact</a></li>
+            <li><a href="#pp-updates">Policy Updates</a></li>
+            <li><a href="#pp-governing">Governing Information</a></li>
+            <li><a href="#pp-faq">FAQ</a></li>
+          </ol>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="vdp-content">
+
+          <!-- 1 INTRODUCTION -->
+          <section class="vdp-section" id="pp-introduction">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">01</p>
+            <h2>Introduction</h2>
+            <p>This Privacy Policy explains how Rexscot ("Rexscot", "we", "us") collects, uses, and protects information in connection with the website at <a href="https://rexscot.com" style="color:var(--white)">rexscot.com</a> ("the Website").</p>
+            <p>Rexscot is a cybersecurity consulting firm providing penetration testing, vulnerability assessment, and security consulting services.</p>
+            <p>For questions about this policy or how your information is handled, contact us at <a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D" style="color:var(--white)">all@rexscot.com</a>.</p>
+          </section>
+
+          <!-- 2 SCOPE -->
+          <section class="vdp-section" id="pp-scope">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">02</p>
+            <h2>Scope of This Privacy Policy</h2>
+            <p>This policy applies to:</p>
+            <ul>
+              <li>Visitors browsing the Website</li>
+              <li>People submitting the Contact form or Collaborate form</li>
+              <li>Security researchers submitting vulnerability reports under the <a href="#" onclick="nav('security')" style="color:var(--white)">Vulnerability Disclosure Policy</a></li>
+              <li>Prospective clients requesting information about our services</li>
+            </ul>
+            <div class="vdp-notice">
+              <p>This Website Privacy Policy does not replace contractual confidentiality or data-processing terms contained in a Non-Disclosure Agreement, Master Services Agreement, Statement of Work, Rules of Engagement, or other signed engagement documentation. Where a client relationship is governed by such documents, those documents may contain additional or more specific terms.</p>
+            </div>
+          </section>
+
+          <!-- 3 INFORMATION WE COLLECT -->
+          <section class="vdp-section" id="information-we-collect">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">03</p>
+            <h2>Information We Collect</h2>
+
+            <h3>A — Information You Provide Directly</h3>
+            <p>When you submit a form on this Website, we receive the information you enter into that form.</p>
+            <table class="vdp-table">
+              <thead><tr><th>Form</th><th>Fields Collected</th></tr></thead>
+              <tbody>
+                <tr><td>Contact Form</td><td>Name, company, email address, website/application URL, service required, budget range, preferred contact method, project description</td></tr>
+                <tr><td>Collaborate Form</td><td>Name, email address, collaboration type, proposal description</td></tr>
+              </tbody>
+            </table>
+            <p>Both forms are processed via Netlify Forms (see Section 10). We do not ask for passwords, payment details, or government ID numbers through these forms, and you should not submit them.</p>
+
+            <h3>B — Information Collected Automatically</h3>
+            <p>The Website itself does not run first-party analytics or tracking scripts, and does not set cookies or use browser local/session storage to identify or track visitors.</p>
+            <p>Standard web server and hosting-infrastructure logs (for example, IP address, request timestamp, and browser user-agent string) may be generated by our hosting provider as part of normal web server operation and basic security monitoring. These are infrastructure-level logs rather than data actively collected by the Website's own code.</p>
+
+            <h3>C — Information Received from Third Parties</h3>
+            <p>We do not currently receive personal information about you from third-party data brokers or marketing partners. Form submissions are relayed to us by our form-processing provider (Netlify) as described in Section 10.</p>
+
+            <h3>D — Information Generated During Communications or Security Reporting</h3>
+            <p>If you email us directly, or submit a vulnerability report, the content of that communication — including any technical details, attachments, or personal information you choose to include — is received and retained as described in Sections 5 and 12.</p>
+          </section>
+
+          <!-- 4 CONTACT & COMMUNICATION -->
+          <section class="vdp-section" id="pp-contact-info">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">04</p>
+            <h2>Contact and Communication Information</h2>
+            <p>When you submit the Contact form, request a service, request collaboration, or email us directly, we use the information provided to respond to you and evaluate your enquiry. This is distinct from a security vulnerability report — see Section 5.</p>
+            <p>Email sent to <a href="mailto:all@rexscot.com" style="color:var(--white)">all@rexscot.com</a> is received directly by Rexscot; the content and any attachments you send are retained as part of normal business correspondence.</p>
+          </section>
+
+          <!-- 5 VULNERABILITY REPORTS -->
+          <section class="vdp-section" id="pp-vuln-reports">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">05</p>
+            <h2>Vulnerability Reports</h2>
+            <p>Security researchers may submit vulnerability reports under our <a href="#" onclick="nav('security')" style="color:var(--white)">Vulnerability Disclosure Policy</a>. Vulnerability reports may contain technical information (such as affected endpoints, request/response data, or proof-of-concept code) and, depending on what the researcher chooses to submit, personal information.</p>
+            <div class="vdp-notice warn">
+              <p>Researchers should <strong>not</strong> submit passwords, private keys, API secrets, unnecessary personal data, unnecessary production data, or confidential third-party information as part of a report.</p>
+            </div>
+            <p>This Privacy Policy does not weaken or replace the reporting process, scope restrictions, or safe-harbor language set out in the Vulnerability Disclosure Policy at <a href="#" onclick="nav('security')" style="color:var(--white)">rexscot.com/security</a>.</p>
+          </section>
+
+          <!-- 6 HOW WE USE INFORMATION -->
+          <section class="vdp-section" id="how-we-use-information">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">06</p>
+            <h2>How We Use Information</h2>
+            <p>We use the information described in Section 3 for the following specific purposes:</p>
+            <ul>
+              <li>Responding to enquiries submitted through the Contact or Collaborate forms, or by direct email</li>
+              <li>Evaluating and scoping requested security assessment services</li>
+              <li>Communicating with prospective and existing clients about engagements</li>
+              <li>Receiving, triaging, and responding to vulnerability disclosure reports</li>
+              <li>Maintaining the security and integrity of the Website</li>
+              <li>Preventing spam and abuse of Website forms (see Section 10, honeypot field)</li>
+              <li>Maintaining business records of correspondence</li>
+              <li>Meeting legal or regulatory obligations where applicable</li>
+            </ul>
+            <p>We do not use the information collected through this Website for advertising, profiling, or automated decision-making, and we do not sell it — see Section 11.</p>
+          </section>
+
+          <!-- 7 LEGAL BASIS -->
+          <section class="vdp-section" id="pp-legal-basis">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">07</p>
+            <h2>Legal Basis for Processing</h2>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>The applicable legal framework for this processing, and the precise lawful grounds under that framework, have not yet been confirmed by qualified legal counsel.</p>
+            </div>
+            <p>In general terms, we process information provided through Website forms and direct email on the basis that it is necessary to respond to your enquiry or request, to take steps toward a potential business engagement at your initiative, to receive and act on security reports in the public interest of responsible disclosure, and to comply with applicable legal obligations.</p>
+            <p>Where the Digital Personal Data Protection Act, 2023, or other Indian law applicable to Rexscot uses terminology different from other frameworks (such as the EU GDPR), we describe our practices using the terminology of the law that actually applies rather than assuming GDPR concepts apply by default.</p>
+          </section>
+
+          <!-- 8 COOKIES -->
+          <section class="vdp-section" id="cookies">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">08</p>
+            <h2>Cookies and Similar Technologies</h2>
+            <p>This Website does not set first-party cookies, and its own code does not use browser local storage or session storage to track or identify visitors.</p>
+            <p>Netlify, which hosts this Website and processes form submissions, may set a functional cookie or token as part of its Netlify Forms anti-spam and submission-handling mechanism when a form is submitted. This is limited to form-processing functionality rather than tracking or advertising.</p>
+            <div class="vdp-notice">
+              <p>Because the Website does not use analytics, advertising, or tracking cookies, no cookie-consent banner is currently presented. This will be reviewed if the Website's technology changes.</p>
+            </div>
+          </section>
+
+          <!-- 9 ANALYTICS -->
+          <section class="vdp-section" id="pp-analytics">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">09</p>
+            <h2>Analytics</h2>
+            <p>This Website does not currently run any analytics platform (such as Google Analytics or similar). No visitor-behaviour tracking script is loaded by the Website. If this changes in the future, this Privacy Policy will be updated to name the provider, the information it processes, and any controls available to visitors.</p>
+          </section>
+
+          <!-- 10 THIRD-PARTY SERVICES -->
+          <section class="vdp-section" id="pp-third-parties">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">10</p>
+            <h2>Third-Party Services and Providers</h2>
+            <p>The Website relies on the following third-party services to operate:</p>
+            <table class="vdp-table">
+              <thead><tr><th>Provider</th><th>Purpose</th><th>Information Involved</th></tr></thead>
+              <tbody>
+                <tr><td>Netlify</td><td>Website hosting and form submission processing (Contact and Collaborate forms)</td><td>Form field data you submit; standard hosting request logs</td></tr>
+                <tr><td>Google Fonts</td><td>Web font delivery (Playfair Display, DM Sans)</td><td>Standard font-request connection data (IP address, browser type) per Google's practices</td></tr>
+                <tr><td>cdnjs (Cloudflare)</td><td>Delivery of Three.js and GSAP JavaScript libraries used for visual effects</td><td>Standard script-request connection data</td></tr>
+                <tr><td>Hostinger</td><td>Domain name registration for rexscot.com</td><td>Domain registration data (not visitor data)</td></tr>
+              </tbody>
+            </table>
+            <p>These providers process information according to their own privacy policies. Rexscot does not control, and is not responsible for, the internal data practices of these third parties. We selected them for their function (hosting, fonts, script delivery) rather than for any data-collection capability.</p>
+          </section>
+
+          <!-- 11 DATA SHARING -->
+          <section class="vdp-section" id="data-sharing">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">11</p>
+            <h2>Data Sharing and Disclosure</h2>
+            <p>We do not sell personal information collected through this Website, and we do not share it with third parties for their own marketing purposes.</p>
+            <p>Information may be shared in the following limited circumstances:</p>
+            <ul>
+              <li>With service providers who process data on our behalf strictly to operate the Website (see Section 10 — Netlify, in particular, for form processing)</li>
+              <li>With professional advisers (such as legal or accounting) where necessary and subject to confidentiality</li>
+              <li>With authorities or regulators where required by applicable law</li>
+              <li>In connection with a legal process, dispute, or the protection of Rexscot's rights or the rights of others</li>
+            </ul>
+          </section>
+
+          <!-- 12 DATA RETENTION -->
+          <section class="vdp-section" id="data-retention">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">12</p>
+            <h2>Data Retention</h2>
+            <p>We retain information collected through this Website only for as long as reasonably necessary for the purposes described in Section 6, including:</p>
+            <ul>
+              <li>As long as necessary to respond to and resolve an enquiry, engagement discussion, or vulnerability report</li>
+              <li>As required to maintain business records and correspondence</li>
+              <li>As required by applicable contractual obligations once a client engagement begins</li>
+              <li>As required by applicable law</li>
+            </ul>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>Exact retention periods for each data category are [RETENTION PERIOD TO BE CONFIRMED] and will be finalised as part of legal review.</p>
+            </div>
+          </section>
+
+          <!-- 13 DATA SECURITY -->
+          <section class="vdp-section" id="security">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">13</p>
+            <h2>Data Security</h2>
+            <p>As a cybersecurity consulting firm, we take reasonable, appropriate measures to protect information submitted through this Website, consistent with the confidentiality and evidence-handling principles applied in our client engagements. These measures may include:</p>
+            <ul>
+              <li>Restricted access to information received through Website forms and email</li>
+              <li>Secure transmission of form submissions (HTTPS)</li>
+              <li>Data minimisation — collecting only what is needed to respond to a request</li>
+              <li>Careful handling of vulnerability reports in line with our Vulnerability Disclosure Policy</li>
+              <li>Controlled retention of correspondence and reports</li>
+            </ul>
+            <div class="vdp-notice">
+              <p>No method of transmission or storage is completely secure. We do not claim that any system is "100% secure," and we do not hold any specific security certification (such as ISO 27001 or SOC 2) for this Website unless separately confirmed and documented.</p>
+            </div>
+          </section>
+
+          <!-- 14 BREACH -->
+          <section class="vdp-section" id="pp-breach">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">14</p>
+            <h2>Security Incidents</h2>
+            <p>Rexscot takes reasonable steps to protect information handled through this Website. In the event of a security incident affecting personal information, we will respond in accordance with applicable law and our internal procedures.</p>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>We do not commit to a specific notification timeframe (such as "within 24 hours") in this policy. Applicable breach-notification obligations under Indian law will be confirmed through legal review.</p>
+            </div>
+          </section>
+
+          <!-- 15 YOUR RIGHTS -->
+          <section class="vdp-section" id="your-rights">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">15</p>
+            <h2>Your Rights</h2>
+            <p>Depending on the law applicable to the processing of your information, you may have rights such as requesting access to, correction of, or deletion of information you have provided to us.</p>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>The exact set of rights available to you, and the process for exercising them, depends on the specific legal framework that applies (for example, the Digital Personal Data Protection Act, 2023, where applicable) and will be confirmed through legal review rather than assumed from other jurisdictions' frameworks.</p>
+            </div>
+            <p>To make a request regarding your information, contact us at <a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D" style="color:var(--white)">all@rexscot.com</a>.</p>
+          </section>
+
+          <!-- 16 MINORS -->
+          <section class="vdp-section" id="pp-minors">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">16</p>
+            <h2>Children and Minors</h2>
+            <p>This Website is a business-to-business and professional services website and is not directed at, or designed for, children. We do not knowingly collect personal information from children through this Website.</p>
+          </section>
+
+          <!-- 17 TRANSFERS -->
+          <section class="vdp-section" id="pp-transfers">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">17</p>
+            <h2>International Data Transfers</h2>
+            <p>Rexscot operates from India. Some third-party service providers described in Section 10 (such as Netlify and Google Fonts) may process or route data through infrastructure located outside India as part of their global service delivery.</p>
+            <p>We rely on these providers' own security and privacy practices for such processing. We do not have confirmed details of every specific data-routing location for every provider, and this section will be updated with more specific information as it is confirmed.</p>
+          </section>
+
+          <!-- 18 CLIENT ENGAGEMENT DATA -->
+          <section class="vdp-section" id="pp-client-data">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">18</p>
+            <h2>Business and Client Engagement Data</h2>
+            <p>Information processed during a formal client engagement — including scope details, findings, evidence, and reports — is governed by the relevant signed engagement documentation, which may include a Non-Disclosure Agreement, Master Services Agreement, Statement of Work, Rules of Engagement, and, where applicable, a data-processing agreement.</p>
+            <p>This Website Privacy Policy describes our practices for the public Website only and is not a substitute for the complete data-processing terms of a client engagement.</p>
+          </section>
+
+          <!-- 19 AI -->
+          <section class="vdp-section" id="pp-ai">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">19</p>
+            <h2>AI and Automated Tools</h2>
+            <p>Rexscot may use AI-assisted tools as part of appropriate internal business and security research workflows, consistent with the AI-assisted reporting principles described in our Vulnerability Disclosure Policy.</p>
+            <p>We do not claim that every Website submission or communication is processed by AI, that every vulnerability report is sent to an AI provider, or that no human review occurs. Use of AI tools, where it occurs, is limited to appropriate internal workflows.</p>
+            <div class="vdp-notice warn">
+              <p>Rexscot does not send confidential client data or sensitive information to external AI systems outside of a documented, appropriate workflow.</p>
+            </div>
+          </section>
+
+          <!-- 20 EXTERNAL LINKS -->
+          <section class="vdp-section" id="pp-links">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">20</p>
+            <h2>External Links</h2>
+            <p>This Website may link to external websites, including third-party services referenced in Section 10. Rexscot is not responsible for the content or privacy practices of external websites. We encourage you to review the privacy policy of any external website you visit.</p>
+          </section>
+
+          <!-- 21 CONTACT -->
+          <section class="vdp-section" id="privacy-contact">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">21</p>
+            <h2>Privacy Contact</h2>
+            <table class="vdp-table">
+              <thead><tr><th>Detail</th><th>Information</th></tr></thead>
+              <tbody>
+                <tr><td>Privacy Contact</td><td><a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D" style="color:var(--white)">all@rexscot.com</a></td></tr>
+                <tr><td>General Contact</td><td><a href="mailto:all@rexscot.com" style="color:var(--white)">all@rexscot.com</a></td></tr>
+                <tr><td>Website</td><td><a href="https://rexscot.com" style="color:var(--white)">https://rexscot.com</a></td></tr>
+              </tbody>
+            </table>
+            <p>Rexscot does not currently have a dedicated privacy-specific mailbox separate from its general business contact address.</p>
+          </section>
+
+          <!-- 22 UPDATES -->
+          <section class="vdp-section" id="pp-updates">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">22</p>
+            <h2>Policy Updates</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, the technologies used on this Website, or applicable law. The current version is always published at <a href="https://rexscot.com/privacy" style="color:var(--white)">rexscot.com/privacy</a>.</p>
+            <table class="vdp-table">
+              <thead><tr><th>Version</th><th>Effective Date</th><th>Last Updated</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>1.0</td><td>[ POLICY EFFECTIVE DATE ]</td><td>[ LAST UPDATED ]</td><td><span class="badge badge-draft">Draft</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- 23 GOVERNING -->
+          <section class="vdp-section" id="pp-governing">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">23</p>
+            <h2>Governing / Legal Information</h2>
+            <div class="vdp-notice legal">
+              <p><span class="badge badge-legal" style="margin-bottom:0.5rem;display:inline-block">Legal Review Required</span><br>Governing law and jurisdiction for this policy will be confirmed once Rexscot's legal entity structure and registered address are finalised. This section will be completed following legal review rather than an assumed jurisdiction.</p>
+            </div>
+          </section>
+
+          <!-- 24 FAQ -->
+          <section class="vdp-section" id="pp-faq">
+            <p class="t-eyebrow" style="margin-bottom:0.75rem">24</p>
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>What information does Rexscot collect?</h3>
+            <p>Primarily what you provide directly through the Contact or Collaborate forms, or by emailing us — see Section 3. We do not run analytics or use tracking cookies.</p>
+
+            <h3>How can I contact Rexscot about privacy?</h3>
+            <p>Email <a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D" style="color:var(--white)">all@rexscot.com</a> — see Section 21.</p>
+
+            <h3>How do I report a security vulnerability?</h3>
+            <p>Review the <a href="#" onclick="nav('security')" style="color:var(--white)">Vulnerability Disclosure Policy</a> at rexscot.com/security and email all@rexscot.com with the appropriate subject line.</p>
+
+            <h3>Does the Vulnerability Disclosure Policy apply to client systems?</h3>
+            <p>No. It applies only to Rexscot's own published in-scope assets. Client systems require separate written authorisation — see Section 2D of the Vulnerability Disclosure Policy.</p>
+
+            <h3>How can I request information about my data?</h3>
+            <p>Email <a href="mailto:all@rexscot.com?subject=%5BPRIVACY%5D" style="color:var(--white)">all@rexscot.com</a> — see Section 15 (Your Rights) and Section 21 (Privacy Contact).</p>
+          </section>
+
+        </div><!-- /vdp-content -->
+      </div><!-- /vdp-layout -->
+    </div>
+  </section>
 </div>
 
 <!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
@@ -2172,15 +3299,26 @@ window.addEventListener('load', function () {
 });
 
 // ─────────────────── NAVIGATION ───────────────────
-function nav(page) {
+function nav(page, anchor) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   const p = document.getElementById('page-' + page);
-  if (p) { p.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  if (p) { p.classList.add('active'); }
   const nl = document.getElementById('nl-' + page);
   if (nl) nl.classList.add('active');
   closeMobile();
-  setTimeout(initReveal, 80);
+  // Update page title for SEO
+  const titles = { home: 'Rexscot — Penetration Testing & Security Consulting', services: 'Services — Rexscot', about: 'About — Rexscot', reviews: 'Clients — Rexscot', collaborate: 'Collaborate — Rexscot', contact: 'Contact — Rexscot', security: 'Vulnerability Disclosure Policy | Rexscot', privacy: 'Rexscot Privacy Policy | Rexscot' };
+  if (titles[page]) document.title = titles[page];
+  setTimeout(() => {
+    if (anchor) {
+      const el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    initReveal();
+  }, 80);
 }
 
 function openMobile() { document.getElementById('mobileOverlay').classList.add('open'); }
